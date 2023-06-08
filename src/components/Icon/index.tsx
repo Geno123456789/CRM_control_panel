@@ -1,0 +1,16 @@
+export { ReactComponent as Logo } from "../../icons/logo.svg";
+export { ReactComponent as PersonIcon } from "../../icons/ic_person.svg";
+export { ReactComponent as BurgerMenuIcon } from "../../icons/burgerMenu.svg";
+export { ReactComponent as MainPageIcon } from "../../icons/mainPageIcon.svg";
+export { ReactComponent as SearchIcon } from "../../icons/searchIcon.svg";
+export { ReactComponent as TableIcon } from "../../icons/tableIcon.svg";
+export { ReactComponent as CalendarIcon } from "../../icons/calendarIcon.svg";
+export { ReactComponent as MapIcon } from "../../icons/mapIcon.svg";
+export { ReactComponent as WidgetsIcon } from "../../icons/widgetsIcon.svg";
+export { ReactComponent as SettingsIcon } from "../../icons/settingsIcon.svg";
+export { ReactComponent as ProfileSetupIcon } from "../../icons/profileSetupIcon.svg";
+export { ReactComponent as FinanceIcon } from "../../icons/financeIcon.svg";
+export { ReactComponent as ExitIcon } from "../../icons/exitIcon.svg";
+export { ReactComponent as UpArrow } from "../../icons/upArrow.svg";
+export { ReactComponent as DownArrow } from "../../icons/downArrow.svg";
+export { ReactComponent as SearchButton } from "../../icons/searchButton.svg";
