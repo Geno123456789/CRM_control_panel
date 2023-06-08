@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { URL, TOKEN, checkResponse } from '../../utils/api';
 import { TData } from "../../utils/types";
 import { SearchButton } from "../../components/Icon";
@@ -7,11 +7,10 @@ import styles from "./AddressPage.module.css";
 export const AddressPage = () => {
 
 	const [data, setData] = useState<Array<TData>>();
-	const [isCollapsed, setIsCollapsed] = useState<boolean>(true);
-	const inputRef = useRef<HTMLInputElement>(null);
-	const query = inputRef.current?.value;
+	const [isEditMode, setIsEditMode] = useState<boolean>(true);
+	const [address, setAddress] = useState<string>('');
 
-	const getData = (query: string | undefined) => {
+	const getData = (address: string | undefined) => {
 		return fetch(URL, {
 			method: 'POST',
 			headers: {
@@ -19,7 +18,7 @@ export const AddressPage = () => {
 				"Accept": "application/json",
 				"Authorization": "Token " + `${TOKEN}`,
 			},
-			body: JSON.stringify({ query: query })
+			body: JSON.stringify({ query: address })
 		})
 			.then(checkResponse)
 			.then(data => setData(data.suggestions))
@@ -27,21 +26,16 @@ export const AddressPage = () => {
 	};
 
 	useEffect(() => {
-		getData(query);
-	}, [query]);
+		getData(address);
+	}, [isEditMode]);
 
 
 	const onSubmit = (e: React.SyntheticEvent) => {
 		e.preventDefault();
-		getData(query);
-		setIsCollapsed(true);
+		getData(address);
+		setIsEditMode(true);
 	};
 
-	const handleChange = () => {
-		if (inputRef.current && inputRef.current?.value.length <= 0) {
-			setIsCollapsed(false);
-		}
-	};
 
 	return (
 		<div className={styles.container}>
@@ -53,9 +47,9 @@ export const AddressPage = () => {
 					name="input"
 					className={styles.input}
 					placeholder='Введите адрес'
-					ref={inputRef}
+					value={address}
 					minLength={3}
-					onChange={handleChange}
+					onChange={(e) => setAddress(e.target.value)}
 				/>
 				<button className={styles.button} type="submit">
 					<span className={styles.icon}>
@@ -64,12 +58,12 @@ export const AddressPage = () => {
 					<span className={styles.buttonText}>Поиск</span>
 				</button>
 			</form>
-
-			{data?.length === 0 && inputRef.current && inputRef.current?.value.length > 0 &&
+			
+			{data?.length === 0 && address.length > 0 && !isEditMode &&
 				<p className={styles.dataEmpty}>Ничего не найдено. Попробуйте еще раз.</p>
 			}
 
-			{!!data?.length && isCollapsed === true ? (
+			{!!data?.length && isEditMode ? (
 				<div className={styles.address}>
 					<p className={styles.paragraphTitle}>Адреса</p>
 					{data.map((el, index) =>

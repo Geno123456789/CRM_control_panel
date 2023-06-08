@@ -23,37 +23,37 @@ export const Sidebar = () => {
 					<li>
 						<NavLink to='/' className={({ isActive }) => `${isActive ? styles.active : styles.link}`}>
 							<MainPageIcon />
-							Главная
+							<span>Главная</span>
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/address' className={({ isActive }) => `${isActive ? styles.active : styles.link}`}>
 							<SearchIcon />
-							Поиск адресов
+							<span>Поиск адресов</span>
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/tables' className={({ isActive }) => `${isActive ? styles.active : styles.link}`}>
 							<TableIcon />
-							Таблицы
+							<span>Таблицы</span>
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/calendar' className={({ isActive }) => `${isActive ? styles.active : styles.link}`}>
 							<CalendarIcon />
-							Календарь
+							<span>Календарь</span>
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/cards' className={({ isActive }) => `${isActive ? styles.active : styles.link}`}>
 							<MapIcon />
-							Карты
+							<span>Карты</span>
 						</NavLink>
 					</li>
 					<li>
 						<NavLink to='/widgets' className={({ isActive }) => `${isActive ? styles.active : styles.link}`}>
 							<WidgetsIcon />
-							Виджеты
+							<span>Виджеты</span>
 						</NavLink>
 					</li>
 					<li>
